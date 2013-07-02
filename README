@@ -3,6 +3,8 @@ Rails Version - 3.2.12
 
 Database Server - MySQL 5.5
 
+installation on ubuntu => sudo apt-get install mysql-server mysql-client
+
 Gems Required - 
 
 'mysql2'
@@ -11,7 +13,11 @@ Gems Required -
 'execjs'
 'therubyracer'
 
-Database libraries
+getting gems => gem install 'gem_name'
+
+MySQL drivers
 
 'libmysql-ruby'
 'libmysqlclient-dev'
+
+installing on ubuntu => sudo apt-get install libmysql-ruby libmysqlclient-dev
