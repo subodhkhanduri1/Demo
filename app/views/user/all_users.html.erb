@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title></title>
+<style type="text/css" media="screen">
+    body {
+        margin: 0;
+        padding: 0;
+        background-color: #f0f0f0;
+        font-family: "Lucida Grande", "Bitstream Vera Sans", "Verdana";
+        font-size: 13px;
+        color: #333;
+    }
+
+    #top
+    {
+        width: 100%;
+        height: 40px;
+
+        margin:0px;
+        padding: 0px;
+
+        display:block;
+        clear:both;
+        background-color: darkslategrey;
+        /*border: 1px solid black;*/
+    }
+
+    #topbar
+    {
+        width: 800px;
+        height: 100%;
+
+        margin: 0px auto;
+        padding: 0px;
+
+
+
+        display:block;
+        clear: both;
+        overflow:hidden;
+    }
+
+    #welcome
+    {
+        /*width: 300px;*/
+        height: 100%;
+
+        margin:0px;
+        padding: 0px;
+
+        display:block;
+        clear:left;
+        float:left;
+        color: white;
+
+    }
+
+    #welcome a
+    {
+        color: white;
+        text-decoration: none;
+    }
+
+    #welcome a:hover
+    {
+        color: white;
+        text-decoration: underline;
+    }
+
+    #logout
+    {
+        width: 50px;
+        height: 100%;
+
+        margin:0px;
+        padding: 0px;
+
+        display:block;
+        clear:right;
+        float:right;
+        color: white;
+    }
+
+    #logout a
+    {
+        color: white;
+        text-decoration: none;
+    }
+
+    #logout a:hover
+    {
+        text-decoration: underline;
+    }
+
+
+    #page
+    {
+        margin: 0px auto;
+        padding: 20px 0px 0px;
+        width: 800px;
+        /*border: 1px solid black;*/
+        min-height: 570px;
+        display:block;
+        clear: both;
+    }
+
+    #footer
+    {
+        width:100%;
+        height: 55px;
+
+        margin:0px;
+        padding: 0px;
+
+        /*border: 1px solid black;*/
+        background-color: darkslategrey;
+        display: block;
+        clear:both;
+    }
+
+    #tweets
+    {
+        width: 500px;
+        /*height: 100px;*/
+        margin:0px;
+        padding: 0px;
+
+        float:left;
+        clear:left;
+        /*border: 1px solid black;*/
+        border-radius: 5px;
+        display: block;
+
+    }
+
+    #tweet
+    {
+        width:488px;
+        min-height: 50px;
+        margin:10px 5px 10px;
+        padding: 0px;
+
+        /*float:right;*/
+        /*border: 1px solid red;*/
+        border-radius: 5px;
+        box-shadow: 2px 2px 10px 1px #000000;
+        display: block;
+    }
+
+    #tweet_head
+    {
+        width: 500px;
+        height: 20px;
+        margin: 0px;
+        padding: 0px;
+
+        /*float:right;*/
+        border-bottom: 1px solid black;
+        display: block;
+        color: darkslategrey;
+    }
+
+    #tweet_user
+    {
+        width:488px;
+        height: 20px;
+        margin:0px;
+        padding: 0px;
+
+        /*float:right;*/
+        border-bottom: 1px solid steelblue;
+        display: block;
+    }
+
+    #tweet_message
+    {
+        resize: none;
+    }
+
+    #otherusers
+    {
+        width: 270px;
+        min-height: 200px;
+        margin:0px;
+        padding: 0px;
+
+        float:right;
+        /*border: 1px solid black;*/
+        display: block;
+
+    }
+
+    #followers
+    {
+        width: 270px;
+        margin:0px;
+        padding: 0px;
+        display: block;
+        clear:both;
+
+    }
+
+    #follower
+    {
+        margin:0px auto;
+        padding: 0px;
+
+        width: 250px;
+        height:30px;
+
+        display: block;
+        clear:both;
+    }
+
+    #followees
+    {
+        width: 270px;
+        margin:0px;
+        padding: 0px;
+        display: block;
+        clear:both;
+
+    }
+
+    #followee
+    {
+        margin:0px auto;
+        padding: 0px;
+
+        width: 250px;
+        height:30px;
+
+        display: block;
+        clear:both;
+    }
+
+</style>
+</head>
+<body>
+<div id="top">
+  <div id="topbar">
+    <div id="welcome">
+      <p>Welcome <%= @user.name %>!&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href='/user/home' >Home</a> | <a href='/user/edit_profile' >Edit Profile</a></p>
+    </div>
+    <div id="logout">
+      <p><%= link_to 'logout', :action => 'logout' %></p>
+    </div>
+  </div>
+</div>
+
+<div id="page">
+
+  <div id="users_all">
+    <% if @users.size>0 %>
+        <h3>&nbsp;All users</h3>
+        <table border="0" >
+        <% @users.each do |u| %>
+           <tr>
+             <td>
+              <%= link_to u.name, controller: :user, action: :profile, user: u.id %>
+             </td>
+             <td>
+               <% if @user.followees.exists?(u)%>
+                   <%= form_tag :controller => 'follow', :action => 'delete' do %>
+                   <%= hidden_field_tag :following_id,"#{u.id}" %>
+                   <%= submit_tag("Unfollow") %>
+                   <% end %>
+               <% else %>
+                 <%= form_tag :controller => 'follow', :action => 'create' do %>
+                   <%= hidden_field_tag :following_id,"#{u.id}" %>
+                   <%= submit_tag("Follow") %>
+                 <% end %>
+               <% end %>
+             </td>
+           </tr>
+       <% end %>
+        </table>
+        <br/>
+        <%= will_paginate @users %>
+        <%  else %>
+        <h3>No other user.</h3>
+    <% end %>
+
+  </div>
+
+</div>
+
+</div>
+<div id="footer">
+
+</div>
+</body>
+</html>

@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title></title>
+<style type="text/css" media="screen">
+    body {
+        margin: 0;
+        padding: 0;
+        background-color: #f0f0f0;
+        font-family: "Lucida Grande", "Bitstream Vera Sans", "Verdana";
+        font-size: 13px;
+        color: #333;
+    }
+
+    #top
+    {
+        width: 100%;
+        height: 40px;
+
+        margin:0px;
+        padding: 0px;
+
+        display:block;
+        clear:both;
+        background-color: darkslategrey;
+        /*border: 1px solid black;*/
+    }
+
+    #topbar
+    {
+        width: 800px;
+        height: 100%;
+
+        margin: 0px auto;
+        padding: 0px;
+
+
+
+        display:block;
+        clear: both;
+        overflow:hidden;
+    }
+
+    #welcome
+    {
+        width: 300px;
+        height: 100%;
+
+        margin:0px;
+        padding: 0px;
+
+        display:block;
+        clear:left;
+        float:left;
+        color: white;
+
+    }
+
+    #logout
+    {
+        width: 70px;
+        height: 100%;
+
+        margin:0px;
+        padding: 0px;
+
+        display:block;
+        clear:right;
+        float:right;
+        color: white;
+    }
+
+    #logout a
+    {
+        color: white;
+        text-decoration: none;
+    }
+
+    #logout a:hover
+    {
+        text-decoration: underline;
+    }
+
+
+    #page
+    {
+        margin: 0px auto;
+        padding: 20px 0px 0px;
+        width: 800px;
+        /*border: 1px solid black;*/
+        min-height: 570px;
+        display:block;
+        clear: both;
+    }
+
+    #footer
+    {
+        width:100%;
+        height: 55px;
+
+        margin:0px;
+        padding: 0px;
+
+        /*border: 1px solid black;*/
+        background-color: darkslategrey;
+        display: block;
+        clear:both;
+    }
+
+    #tweets
+    {
+        width: 500px;
+        /*height: 100px;*/
+        margin:0px;
+        padding: 0px;
+
+        float:left;
+        clear:left;
+        border: 1px solid black;
+        display: block;
+
+    }
+
+    #tweet
+    {
+        width:488px;
+        height: 50px;
+        margin:5px;
+        padding: 0px;
+
+        /*float:right;*/
+        border: 1px solid red;
+        border-radius: 5px;
+        display: block;
+    }
+
+    #otherusers
+    {
+        width: 270px;
+        min-height: 200px;
+        margin:0px;
+        padding: 0px;
+
+        float:right;
+        border: 1px solid black;
+        display: block;
+
+    }
+
+    #followers
+    {
+        width: 270px;
+        margin:0px;
+        padding: 0px;
+        display: block;
+
+    }
+
+    #follower
+    {
+        margin:0px auto;
+        width: 250px;
+        height:30px;
+        padding: 0px;
+
+        display: block;
+        clear:both;
+    }
+
+    #followee
+    {
+        margin:0px auto;
+        padding: 0px;
+
+        width: 250px;
+        height:30px;
+
+        display: block;
+        clear:both;
+    }
+
+
+        /*h1 {
+            font-size: 28px;
+            color: #000;
+        }
+
+        a  {color: #03c}
+        a:hover {
+            background-color: #03c;
+            color: white;
+            text-decoration: none;
+        }
+
+
+        #page {
+            background-color: #ffffff;
+            width: 800px;
+            margin: 0;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        #topbar
+        {
+            display:block;
+            overflow:hidden;
+            margin: 0px 0px 5px;
+            width:100%;
+            background-color: cadetblue;
+            height:60px;
+        }
+
+        #content {
+            float: right;
+            background-color: white;
+            border: 2px solid #aaa;
+            /*border: 2px solid #aaa;
+            border-top: none;
+            padding: 25px;
+            width: 500px;
+        }
+
+        #sidebar {
+            float: left;
+            width: 175px;
+        }
+
+        #user_info
+        {
+            display:block;
+            width:100%;
+            height:50px;
+            backgroud-color:red;
+            clear: both;
+        }
+        #photo
+        {
+            float:left;
+            margin: 20px 0px 0px 5px;
+            width:45px;
+            height:45px;
+            background-color: red;
+            clear: left;
+        }
+
+        #footer {
+            clear: both;
+        }
+
+        #header, #about, #getting-started {
+            padding-left: 75px;
+            padding-right: 30px;
+        }
+
+
+        #header {
+            background-image: url("assets/rails.png");
+            background-repeat: no-repeat;
+            background-position: top left;
+            height: 64px;
+        }
+        #header h1, #header h2 {margin: 0}
+        #header h2 {
+            color: #888;
+            font-weight: normal;
+            font-size: 16px;
+        }
+
+
+        #about h3 {
+            margin: 0;
+            margin-bottom: 10px;
+            font-size: 14px;
+        }
+
+        #about-content {
+            background-color: #ffd;
+            border: 1px solid #fc0;
+            margin-left: -55px;
+            margin-right: -10px;
+        }
+        #about-content table {
+            margin-top: 10px;
+            margin-bottom: 10px;
+            font-size: 11px;
+            border-collapse: collapse;
+        }
+        #about-content td {
+            padding: 10px;
+            padding-top: 3px;
+            padding-bottom: 3px;
+        }
+        #about-content td.name  {color: #555}
+        #about-content td.value {color: #000}
+
+        #about-content ul {
+            padding: 0;
+            list-style-type: none;
+        }
+
+        #about-content.failure {
+            background-color: #fcc;
+            border: 1px solid #f00;
+        }
+        #about-content.failure p {
+            margin: 0;
+            padding: 10px;
+        }
+
+
+        #getting-started {
+            border-top: 1px solid #ccc;
+            margin-top: 25px;
+            padding-top: 15px;
+        }
+        #getting-started h1 {
+            margin: 0;
+            font-size: 20px;
+        }
+        #getting-started h2 {
+            margin: 0;
+            font-size: 14px;
+            font-weight: normal;
+            color: #333;
+            margin-bottom: 25px;
+        }
+        #getting-started ol {
+            margin-left: 0;
+            padding-left: 0;
+        }
+        #getting-started li {
+            font-size: 18px;
+            color: #888;
+            margin-bottom: 25px;
+        }
+        #getting-started li h2 {
+            margin: 0;
+            font-weight: normal;
+            font-size: 18px;
+            color: #333;
+        }
+        #getting-started li p {
+            color: #555;
+            font-size: 13px;
+        }
+
+
+        #sidebar ul {
+            margin-left: 0;
+            padding-left: 0;
+        }
+        #sidebar ul h3 {
+            margin-top: 25px;
+            font-size: 16px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #ccc;
+        }
+        #sidebar li {
+            list-style-type: none;
+        }
+        #sidebar ul.links li {
+            margin-bottom: 5px;
+        }
+
+        .filename {
+            font-style: italic;
+        }*/
+</style>
+</head>
+<body>
+<div id="top">
+  <div id="topbar">
+    <div id="welcome">
+      <p>Welcome!</p>
+    </div>
+    <div id="logout">
+      <p><%= link_to 'Sign Up', :action => 'sign_up' %></p>
+    </div>
+  </div>
+</div>
+
+<div id="page">
+
+  <p><b>Login</b></p>
+  <% if @error %>
+      <div id="form_error" style="color: red;">Username and Password do not match or exist!</div>
+  <% end %>
+  <form action="login" method="post" autocomplete="off">
+    <table border="0">
+    <tr>
+      <td align="right">
+      <label for="username">Username: </label>
+      </td>
+      <td >
+      <input id="username" name="username"type="text" maxlength="40"/>
+      </td>
+    </tr>
+    <tr>
+      <td align="right">
+      <label for="password">Password: </label>
+      </td>
+      <td>
+      <input id="password" name="password" type="password" maxlength="80"/>
+      </td>
+    <tr>
+    </table>
+    <input type="submit" name="submit" value="Login">&nbsp;&nbsp;<input name="back" type="submit" value="Home">
+  </form>
+
+</div>
+<div id="footer">
+
+</div>
+</body>
+</html>
+
+<!--<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+</head>
+<body>
+    <p><%= @a %>Hello!</p>
+    <p>Login</p>
+    <% if @error %>
+    <div id="form_error" style="color: red;">Username and Password do not match or exist!</div>
+    <% end %>
+    <form action="login" method="post" autocomplete="off">
+        <p><label for="username">Username: </label><input id="username" name="username"type="text" maxlength="40"/></p>
+        <p><label for="password">Password: </label><input id="password" name="password" type="password" maxlength="80"/></p>
+        <input type="submit" name="submit" value="Login">&nbsp;&nbsp;<input name="back" type="submit" value="Home">
+    </form>
+</body>
+</html>-->
