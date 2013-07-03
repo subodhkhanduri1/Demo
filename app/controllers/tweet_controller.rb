@@ -5,7 +5,7 @@ class TweetController < ApplicationController
       if params[:per_page] && is_integer?(params[:per_page]) && params[:per_page].to_i>15
         per_page = params[:per_page]
       else
-        per_page = 15
+        per_page = 5
       end
       if params[:page] && is_integer?(params[:page]) && params[:page].to_i>0
         page = params[:page]

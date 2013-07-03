@@ -27,10 +27,12 @@ class User < ActiveRecord::Base
   #has_many :follows, foreign_key: 'user_id', dependent: :destroy
 
   validates_presence_of :name, :username, :password
-  validates_length_of :name, :minimum => 1, :maximum => 50
-  validates_length_of :username, :minimum => 1, :maximum => 40
+  validates_length_of :name, :maximum => 50
+  validates_length_of :username, :maximum => 40
   validates_length_of :password, :minimum => 5, :maximum => 80
   validates_uniqueness_of :username
+  validates_format_of :username, :with => /^[a-z][a-z0-9]*$/i, :message => "is invalid (only alphanumeric characters allowed)"
+  validates_format_of :password, :with => /^[a-z][a-z0-9]*$/i, :message => "is invalid (only alphanumeric characters allowed)"
 =begin
   def following?(other_user)
     follows.find_by_following_id(other_user.id)

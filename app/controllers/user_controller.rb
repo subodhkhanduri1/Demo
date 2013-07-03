@@ -62,9 +62,8 @@ class UserController < ApplicationController
         else
           @message = "User '#{@user.username}' successfully created"
         end
-      elsif
+      else
         @message = 'New Passwords dont match'
-
       end
     end
 
@@ -259,7 +258,7 @@ class UserController < ApplicationController
       if params[:per_page] && is_integer?(params[:per_page]) && params[:per_page].to_i>15
         per_page = params[:per_page]
       else
-        per_page = 15
+        per_page = 3
       end
       if params[:page] && is_integer?(params[:page]) && params[:page].to_i>0
         page = params[:page]

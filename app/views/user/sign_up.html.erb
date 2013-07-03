@@ -384,14 +384,14 @@
   <% end %>
 
     <% if @message %>
-        <div id="form_error" style="color: red;"><%= message %></div>
+        <div id="form_error" style="color: red;"><%= @message %></div>
     <% end %>
 
   <%= form_tag :action => 'sign_up' do %>
       <table border="0">
         <tr>
           <td align="right">
-            <label for="old_password">Full Name: </label>
+            <label for="name">Full Name: </label>
           </td>
           <td>
             <%= text_field_tag :name %>
@@ -399,7 +399,7 @@
         <tr>
         <tr>
           <td align="right">
-            <label for="old_password">Username: </label>
+            <label for="username">Username: </label>
           </td>
           <td>
             <%= text_field_tag :username %>
